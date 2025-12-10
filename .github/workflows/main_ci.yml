@@ -1,0 +1,31 @@
+name: CI/CD Pipeline for Reliability Check
+
+# Триггер: Запускать при пуше в ветку main
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build_and_test:
+    name: Build & Run Reliability Tests
+    runs-on: ubuntu-latest # Выполнение на виртуальной машине Ubuntu
+
+    steps:
+    - name: 1. Checkout Code # Получение кода
+      uses: actions/checkout@v4
+
+    - name: 2. Setup Node.js Environment # Настройка среды Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: 3. Install Dependencies # Установка зависимостей (npm install)
+      run: npm install
+
+    - name: 4. Run Reliability Tests # Запуск тестов (npm test)
+      run: npm test
+
+    - name: 5. Display Build Success
+      run: echo "Build and reliability checks passed!"
