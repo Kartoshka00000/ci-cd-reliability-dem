@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Demo project for CI/CD lab",
   "scripts": {
-    "test": "echo 'Reliability tests started... done!' && exit 0",
+    "test": "echo 'Tests intentionally failed due to a bug!' && exit 1"
     "start": "node index.js"
   },
   "keywords": [],
